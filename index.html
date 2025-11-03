@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To-do-list</title>
+</head>
+<body>
+    <div class="container">
+    <h1>To-do-list</h1>
+
+    <div class="input-section">
+            <input 
+                type="text" 
+                id="taskInput" 
+                placeholder="What needs to be done?"
+                autocomplete="off"
+            >
+            <button id="addBtn">Add Task</button>
+        </div>
+
+         <div class="stats">
+            <span>Total: <strong id="totalTasks">0</strong></span>
+            <span>Completed: <strong id="completedTasks">0</strong></span>
+            <span>Remaining: <strong id="remainingTasks">0</strong></span>
+        </div>
+
+        <ul id="taskList">
+            <li class="empty-state">No tasks yet. Add one above!</li>
+        </ul>
+    </div>
+</body>
+
+<script src="main.js"></script>
+
+</html>
