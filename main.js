@@ -2,7 +2,7 @@ const taskInput = document.querySelector('#taskInput');
 const addBtn = document.querySelector('#addBtn');
 const taskList = document.querySelector('#taskList');
 const totalTasksEL = document.querySelector('#totalTasks');
-const completedTasksEL = document.querySelector('completedTasks')
+const completedTasksEL = document.querySelector('#completedTasks')
 const remainingTasksEL = document.querySelector('#remainingTasks');
 
 let tasks = [];
@@ -19,7 +19,7 @@ taskInput.addEventListener('keypress', function(e) {
 
 function addTask() {
     const taskText = taskInput.value.trim();
-    if (taskText === '') 
+    if (taskText === '') {
     alert('Please enter a task.');
     return;
 }
@@ -29,6 +29,19 @@ const task = {
     text: taskText,
     completed: false
 };
-console.log('I added a task', task)
+
+tasks.push(task);
+taskInput.value = '';
+renderTasks();
+updateStats();
+};
+
+taskList.innerHTML = '';
+if (tasks.length === 0) {
+    taskList.innerHTML = '<li class ="empty-state">No tasks yet. Add one above!</li>';
+    return;
+}
+
+
 
 
