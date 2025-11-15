@@ -7,6 +7,14 @@ const remainingTasksEL = document.querySelector('#remainingTasks');
 
 let tasks = [];
 
+const savedTasks = localStorage.getItem('tasks');
+if (savedTasks !== null) {
+    tasks = JSON.parse(savedTasks);
+} 
+
+renderTasks();
+updateStats();
+
 addBtn.addEventListener('click', addTask);
 
 taskInput.addEventListener('keypress', function(e) {
@@ -29,6 +37,9 @@ function addTask() {
     };
 
     tasks.push(task);
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
     taskInput.value = '';
     renderTasks();
     updateStats();
@@ -80,6 +91,9 @@ function toggleTask(id) {
     const t = tasks.find(task => task.id === id);
     if (t) {
         t.completed = !t.completed;
+
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+
         renderTasks();
         updateStats();
     }
@@ -87,6 +101,9 @@ function toggleTask(id) {
 
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
     renderTasks();
     updateStats();
 }
